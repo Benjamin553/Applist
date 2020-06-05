@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ByteArrayOutputStream;
 import android.os.Environment;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.BitmapDrawable;  
 import android.content.Context;
