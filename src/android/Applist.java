@@ -39,16 +39,16 @@ public class Applist extends CordovaPlugin {
             byte[] bitmapdata = bos.toByteArray();			
 			*/
 
-			//Drawable iconDrawable = context.getPackageManager().getApplicationIcon(context.getApplicationInfo());
-			Bitmap bitmap = ((BitmapDrawable) iconDrawable).getBitmap();
-			Bitmap bitmap = Bitmap.createBitmap(iconDrawable.getIntrinsicWidth(),
-			iconDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-			final Canvas canvas = new Canvas(bitmap);
-			iconDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-			iconDrawable.draw(canvas);
-			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-			bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-			byte[] bitmapdata = byteArrayOutputStream.toByteArray();
+		//Drawable iconDrawable = context.getPackageManager().getApplicationIcon(context.getApplicationInfo());
+		//Bitmap bitmap = ((BitmapDrawable) iconDrawable).getBitmap();
+		Bitmap bitmap = Bitmap.createBitmap(iconDrawable.getIntrinsicWidth(),
+		iconDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+		final Canvas canvas = new Canvas(bitmap);
+		iconDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+		iconDrawable.draw(canvas);
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+		byte[] bitmapdata = byteArrayOutputStream.toByteArray();
 
 
             //write the bytes in file
