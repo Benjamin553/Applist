@@ -28,14 +28,27 @@ public class Applist extends CordovaPlugin {
 
 
     //保存图片png
-    public static void drawableTofile(Drawable drawable,String path)
+    public static void drawableTofile(Drawable iconDrawable,String path)
     {
 
             File file = new File(path);
-            Bitmap bitmap=((BitmapDrawable)drawable).getBitmap();
+            /*
+			Bitmap bitmap=((BitmapDrawable)drawable).getBitmap();
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100 /*ignored for PNG, bos);
+            byte[] bitmapdata = bos.toByteArray();			
+			*/
+
+			//Drawable iconDrawable = context.getPackageManager().getApplicationIcon(context.getApplicationInfo());
+			Bitmap bitmap = ((BitmapDrawable) iconDrawable).getBitmap();
+			Bitmap bitmap = Bitmap.createBitmap(iconDrawable.getIntrinsicWidth(),
+			iconDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+			final Canvas canvas = new Canvas(bitmap);
+			iconDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+			iconDrawable.draw(canvas);
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+			byte[] bitmapdata = byteArrayOutputStream.toByteArray();
 
 
             //write the bytes in file
@@ -123,7 +136,7 @@ public class Applist extends CordovaPlugin {
                                         Drawable icon = pm.getApplicationIcon(packageInfo);
                                         if(icon!=null)
                                         {
-                                            //drawableTofile(icon,  path+img_name);
+                                            drawableTofile(icon,  path+img_name);
                                         }
                                     }
                                    app_list.put(cnt++,info);
