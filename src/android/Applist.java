@@ -48,7 +48,7 @@ public class Applist extends CordovaPlugin {
 		iconDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
 		iconDrawable.draw(canvas);
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+		bitmap.compress(Bitmap.CompressFormat.PNG,  0 /*ignored for PNG*/, byteArrayOutputStream);
 		byte[] bitmapdata = byteArrayOutputStream.toByteArray();
 
 
@@ -57,6 +57,8 @@ public class Applist extends CordovaPlugin {
             try {
                 fos = new FileOutputStream(file);
                 fos.write(bitmapdata);
+		fos.flush();
+	        fos.close();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
