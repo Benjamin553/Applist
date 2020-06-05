@@ -123,7 +123,7 @@ public class Applist extends CordovaPlugin {
                                         Drawable icon = pm.getApplicationIcon(packageInfo);
                                         if(icon!=null)
                                         {
-                                            drawableTofile(icon,  path+img_name);
+                                            //drawableTofile(icon,  path+img_name);
                                         }
                                     }
                                    app_list.put(cnt++,info);
